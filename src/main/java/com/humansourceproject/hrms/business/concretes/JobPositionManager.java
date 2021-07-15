@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.humansourceproject.hrms.business.abstracts.JobPositionService;
+import com.humansourceproject.hrms.core.utulities.results.DataResult;
+import com.humansourceproject.hrms.core.utulities.results.SuccessDataResult;
 import com.humansourceproject.hrms.dataAccess.abstracts.JobPositionDao;
 import com.humansourceproject.hrms.entities.concretes.JobPosition;
 
@@ -22,9 +24,9 @@ public class JobPositionManager implements JobPositionService{
 
 
 	@Override
-	public List<JobPosition> getAll() {
+	public DataResult<List<JobPosition>> getAll() {
 		
-		return jobPositionDao.findAll();	
+		return new SuccessDataResult<List<JobPosition>>(this.jobPositionDao.findAll(),"iş pozisyonları listelendi !");	
 	
 	}
 
